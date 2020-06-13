@@ -1,0 +1,125 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Meditation478</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/animations.css">
+  </head>
+  <body>
+    <div class="container">
+      <div id="content">
+         <p id="instructions_part1"></p>
+          <div class="orb_in"></div>
+          <div class="orb_hold"></div>
+          <div class="orb_out"></div>
+          <p id="instructions_part3"></p>
+          <div class="container_small">
+            <div class="col-lg-3">
+                <div class="left_arrow_in">
+                </div>
+                <div class="left_arrow_out">
+                </div>
+            </div>
+            <div class="col-lg-3">
+              <p id="instructions_part2"></p>
+            </div>
+            <div class="col-lg-3">
+              <div class="right_arrow_in">
+              </div>
+              <div class="right_arrow_out">
+              </div>
+            </div>
+          </div>
+
+          <form action="">
+            <button id="begin_btn" class="btn btn-info btn-lg"><i>Begin</i></button>
+          </form>
+      </div>
+    </div>
+    <footer>
+      <p id="copyright">&copy; Kevin Hill</p>
+    </footer>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      $(function () {
+        $("#instructions_part3").hide();
+        $(".right_arrow_in").hide();
+        $(".left_arrow_in").hide();
+        $(".right_arrow_out").hide();
+        $(".left_arrow_out").hide();
+        $(".orb_in").hide();
+        $('.orb_in').css('height', 1);
+        $(".orb_hold").hide();
+        $('.orb_hold').css('height', 1);
+        $(".orb_out").hide();
+        $('.orb_out').css('height', 1);
+        var socket = io();
+        $('form').submit(function(){
+          socket.emit('begin');
+          $('.orb_in').css('height', 375);
+          $(".orb_in").show();
+          $("#begin_btn").hide();
+          return false;
+        });
+        socket.on('breath control', function(msg){
+
+          if (isNaN(msg)){
+            $("#instructions_part1").text( msg.substr(0, 7) );
+            $("#instructions_part2").text( msg.substr(7, 15) );
+            $("#instructions_part3").text( msg.substr(7, 15) );
+            if (msg.localeCompare('Breathe in') === 0){
+                $(".right_arrow_out").hide();
+                $(".left_arrow_out").hide();
+                $(".right_arrow_in").show();
+                $(".left_arrow_in").show();
+                $(".orb_out").hide();
+                $('.orb_out').css('height', 1);
+                $('.orb_in').css('height', 375);
+                $(".orb_in").show();
+                $("#instructions_part1").css('color', '#b2b290');
+                $("#instructions_part2").css('color', '#b2b290');
+            }
+            else if(msg.localeCompare('Breathe hold 7 seconds') === 0){
+                $(".right_arrow_in").hide();
+                $(".left_arrow_in").hide();
+                $(".orb_in").hide();
+                $('.orb_in').css('height', 1);
+                $('.orb_hold').css('height', 375);
+                $(".orb_hold").show();
+                $("#instructions_part1").css('color', 'grey');
+                $("#instructions_part2").hide();
+                $("#instructions_part3").css('color', 'grey');
+                $("#instructions_part3").show();
+            }
+            else if(msg.localeCompare('Breathe out') === 0){
+                $(".right_arrow_out").show();
+                $(".left_arrow_out").show();
+                $(".orb_hold").hide();
+                $('.orb_hold').css('height', 1);
+                $('.orb_out').css('height', 375);
+                $(".orb_out").show();
+                $("#instructions_part3").hide();
+                $("#instructions_part2").show();
+                $("#instructions_part1").css('color', 'lightblue');
+                $("#instructions_part2").css('color', 'lightblue');
+            }
+            else if(msg.localeCompare(' ') === 0){
+                ("#output_in").text( msg );
+            }
+          }
+          else{
+            $(".orb_in").text( msg );
+            $(".orb_hold").text( msg );
+            $(".orb_out").text( msg );
+          }
+
+        });
+      });
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  </body>
+</html>

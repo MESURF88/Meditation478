@@ -1,0 +1,22 @@
+
+{
+  "name": "Meditation478",
+  "description": "my first socket.io and CSS animation app",
+  "repository": "https://github.com/MESURF88/Meditation478.git",
+  "logo": "https://node-js-sample.herokuapp.com/node.svg",
+  "success_url": "/",
+  "keywords": [
+    "node",
+    "express",
+    "socket.io",
+    "realtime",
+    "websocket"
+  ],
+  "scripts": {
+  },
+  "addons": [
+  ],
+  "env": {
+    "BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-nodejs"
+  }
+}

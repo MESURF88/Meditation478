@@ -1,11 +1,11 @@
 # Motivational_Website
-Shows a random quote from a local mysql database. Quotes scraped from the web and put into insert queries using python and word.
-Required packages, node, express, express-handlears, moment, body-parser and mysql.
-To run put in own credentials for mysql database in the dbcon.js file and then go to location of directory with main.js and:
+A meditation webapp that follows the 4-7-8 mindful breathing technique. Played around with CSS animations and timing. Used bootstrap, socket.io and jQuery
+to make it responsive.
+Required packages, node, express, socket.io, moment, body-parser.
 ```
-node main.js <port#>
+node index.js
 ```
 Then go to browser of choice and enter in the url:
 ```
-localhost:<port#>/
+localhost:3000/
 ```

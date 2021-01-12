@@ -5,8 +5,8 @@
   font: 90px Arial,serif;
   color: white;
   background: white;
-  width: 375px;
-  height: 375px;
+  width: 335px;
+  height: 335px;
   border-radius: 50% 50% 50% 50%;
   position: relative;
   animation: in_animation 5s infinite cubic-bezier(.36, .11, .89, .32);
@@ -32,8 +32,8 @@
   font: 90px Arial,serif;
   color: white;
   background: white;
-  width: 375px;
-  height: 375px;
+  width: 335px;
+  height: 335px;
   border-radius: 50% 50% 50% 50%;
   position: relative;
   animation: hold_animation 8s infinite cubic-bezier(.36, .11, .89, .32);
@@ -64,8 +64,8 @@
   font: 90px Arial,serif;
   color: white;
   background: white;
-  width: 375px;
-  height: 375px;
+  width: 335px;
+  height: 335px;
   border-radius: 50% 50% 50% 50%;
   position: relative;
   animation-name: out_animation;

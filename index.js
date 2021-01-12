@@ -61,7 +61,9 @@ socket.on('begin', function(){
 });
 
 
-
-http.listen(port, function(){
-  console.log('listening on localhost:' + port);
+const PORT = process.env.PORT || 3000;
+http.listen(PORT, function(){
+  console.log('listening on localhost:' + PORT);
 });
+
+
